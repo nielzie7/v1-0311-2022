@@ -17,22 +17,14 @@ const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream
 
 // Client Bot
 async function ConnectSocket() {
-  const version = await fetchLatestBaileysVersion()
   const client = WaSocket({
     logger: pino({ level: 'silent' }),
     printQRInTerminal: true,
     browser: ['simple', 'Safari', '1.0.1'],
     auth: state,
-    version: version
+    version: [2, 2241, 7]
   })
   console.clear()
-  CFonts.say(`NIELZIE7`, {
-    font: 'shade',
-    align: 'center',
-    gradient: ['#12c2e9', '#c471ed'],
-    transitionGradient: true,
-    letterSpacing: 3,
-  });
   CFonts.say(`Nielzie / Coded By Rasyid`, {
     font: 'console',
     align: 'center',
@@ -54,7 +46,6 @@ async function ConnectSocket() {
       require("./lib/handler")(client, m, chatUpdate, store)
     } catch (err) {
       console.log(err)
-      l
     }
   })
 
@@ -456,14 +447,24 @@ async function ConnectSocket() {
 
   return client
 }
+require("./lib/handler")
+nocache("./lib/handler", module => console.log(`${module}`, "telah di update"))
+function nocache(module, cb = () => { }) {
+  console.log("Module", `${module}`, "Sedang Di Awasi Untuk Perubahan")
+  fs.watchFile(require.resolve(module), async () => {
+    await uncache(require.resolve(module))
+    cb(module)
+  })
+}
 
+function uncache(module = ".") {
+  return new Promise((resolve, reject) => {
+    try {
+      delete require.cache[require.resolve(module)]
+      resolve()
+    } catch (e) {
+      reject(e)
+    }
+  })
+}
 ConnectSocket()
-
-
-let file = require.resolve(__filename)
-fs.watchFile(file, () => {
-  fs.unwatchFile(file)
-  console.log(chalk.redBright(`Update ${__filename}`))
-  delete require.cache[file]
-  require(file)
-})

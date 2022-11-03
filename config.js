@@ -12,16 +12,16 @@ const chalk = require('chalk')
 
 // Website Api
 global.APIs = {
-    zenz: 'https://zenzapi.xyz',
+  zenz: 'https://zenzapi.xyz',
 }
 
 // Apikey Website Api
 global.APIKeys = {
-    'https://zenzapi.xyz': '21204acd6f9d',
+  'https://zenzapi.xyz': '21204acd6f9d',
 }
 
 // Other
-global.ownername = 'Nielzie '
+global.ownername = 'Nielzie'
 global.owner = ['6282189387018']
 global.packname = 'Created By Nielzie7  ❤️️'
 global.author = 'Nielzie7'
@@ -31,16 +31,17 @@ global.fla = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=tr
 global.prefa = ['/']
 global.sp = '⭔'
 global.mess = {
-    admin: '🙅  Command ini hanya bisa digunakan oleh admin grup!',
-    botAdmin: 'Jadikan bot sebagai admin terlebih dahulu! 🙏',
-    owner: '⚠️ Command ini khusus Owner-sama! ⚠️',
-    group: '👥  Command ini hanya bisa digunakan di dalam grup!',
-    private: '⚡Fitur Digunakan Hanya Untuk Private Chat!',
-    bot: '♥️Fitur Khusus Pengguna Nomor Bot',
-    done: 'Done, ~♥️',
-    wait: '```Loading, 🚀```',
-    text: 'Apa Yang Mau Di Cari? 🔎',
-    error: 'Ups Sepertinya Terjadi Kesalahan',
+  admin: '🙅  Command ini hanya bisa digunakan oleh admin grup!',
+  botAdmin: 'Jadikan bot sebagai admin terlebih dahulu! 🙏',
+  owner: '⚠️ Command ini khusus Owner-sama! ⚠️',
+  group: '👥  Command ini hanya bisa digunakan di dalam grup!',
+  private: '⚡Fitur Digunakan Hanya Untuk Private Chat!',
+  bot: '♥️Fitur Khusus Pengguna Nomor Bot',
+  done: 'Done, ~♥️',
+  wait: '```Loading, 🚀```',
+  text: 'Apa Yang Mau Di Cari? 🔎',
+  error: 'Ups Sepertinya Terjadi Kesalahan',
+  now: 'Fitur Ini Sudah Di Gunakan!',
 }
 global.rules = `*── 「 RULES AND FAQ 」 ──*
 
@@ -79,8 +80,8 @@ Arigatou Gozaimasu! Untuk kalian user ramah dan Beberapa orang yg ikut membantu 
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
-    fs.unwatchFile(file)
-    console.log(chalk.redBright(`Update'${__filename}'`))
-    delete require.cache[file]
-    require(file)
+  fs.unwatchFile(file)
+  console.log(chalk.redBright(`Update'${__filename}'`))
+  delete require.cache[file]
+  require(file)
 })
